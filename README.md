@@ -21,7 +21,7 @@ You can install the package via composer:
 composer require byteflick/laravel-strict-domain
 ```
 
-You can publish the config file with:
+You can publish the config file with (Optional):
 
 ```bash
 php artisan vendor:publish --tag="laravel-strict-domain-config"
@@ -31,7 +31,7 @@ This is the contents of the published config file:
 
 ```php
 return [
-    'domain' => env('APP_DOMAIN', 'http://localhost'),
+    'domain' => env('APP_DOMAIN', 'localhost.com'),
 ];
 ```
 
@@ -39,37 +39,77 @@ return [
 
 ### Step 1: Configure the Environment
 
-You need to add an environment variable called `APP_DOMAIN` to your localhost.
-The value of this variable is used for checking the desired domain name against the one in the incoming request.
+You need to add an environment variable called `APP_DOMAIN` to your `.env` file. The value of this variable is used 
+for validating the incoming traffic.
 
 ```php
-APP_DOMAIN=localhost
+APP_DOMAIN=localhost.com
 ```
 
 ### Step 2: Apply the Middleware
 
-#### On Specific Routes Only
+#### 2.1 Redirecting External Traffic
 
-You can add the middleware to individual routes or apply it as a route group as well.
+If you want to redirect incoming traffic to your application from other domain/hosts to your own then you can
+use `RedirectExternalTraffic` middleware. This is useful when you want to redirect all the traffic from `johndoe.com` (
+referrer domain) and other domains/hosts to `janedoe.com` (your designated domain).
 
-#### Globally For Laravel 11
+##### On Specific Routes Only
 
-Append the middleware to your default middlewares into your `bootstrap/app.php` via the code below.
+You can add the middleware to individual routes or apply it via a route group.
+
+##### Globally For Laravel 11
+
+Append the middleware to your default middlewares into your `bootstrap/app.php` via the code below to redirect all
+external traffic outside your designated host to your designated host.
 
 ```php
 ->withMiddleware(function (Middleware $middleware) {
-     $middleware->append(CheckDomain::class);
+     $middleware->append(\ByteFlick\LaravelStrictDomain\Middlewares\RedirectExternalTraffic::class);
 })
 ```
 
-#### Globally For Laravel 10
+##### Globally For Laravel 10
 
-Add the middleware to your middlewares into your `App\Http\Kernel.php` via the code below.
+Add the middleware to your default middlewares into your `App\Http\Kernel.php` via the code below to redirect all
+external traffic outside your designated host to your designated host.
 
 ```php
 protected $middleware = [
-        \ByteFlick\LaravelStrictDomain\Middlewares\CheckDomain::class,
-    ];
+    \ByteFlick\LaravelStrictDomain\Middlewares\RedirectExternalTraffic::class,
+];
+```
+
+#### 2.2 Blocking External Traffic
+
+If you want to block incoming traffic to your application from other domain/hosts to your own then you can
+use `BlockExternalTraffic` middleware. This is useful when you want to allow traffic from `janedoe.com` but
+block `johndoe.com` and others to your application.
+
+##### On Specific Routes Only
+
+You can add the middleware to individual routes or apply it via a route group.
+
+##### Globally For Laravel 11
+
+Append the middleware to your default middlewares into your `bootstrap/app.php` via the code below to block all
+external traffic outside your designated host.
+
+```php
+->withMiddleware(function (Middleware $middleware) {
+     $middleware->append(\ByteFlick\LaravelStrictDomain\Middlewares\BlockExternalTraffic::class);
+})
+```
+
+##### Globally For Laravel 10
+
+Add the middleware to your default middlewares into your `App\Http\Kernel.php` via the code below to block all
+external traffic outside your designated host.
+
+```php
+protected $middleware = [
+    \ByteFlick\LaravelStrictDomain\Middlewares\BlockExternalTraffic::class,
+];
 ```
 
 ## Changelog
@@ -87,6 +127,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [ByteFlick](https://github.com/ByteFlick)
+- [ORPtech](https://orptech.com)
 - [All Contributors](../../contributors)
 
 ## License

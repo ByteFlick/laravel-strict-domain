@@ -11,6 +11,6 @@ class LaravelStrictDomainServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('laravel-strict-domain')
-            ->hasConfigFile();
+            ->hasConfigFile(['strict-domain']);
     }
 }
