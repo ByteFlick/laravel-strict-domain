@@ -3,6 +3,7 @@
 # Strict Domain Checking for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ByteFlick/laravel-strict-domain.svg?style=flat-square)](https://packagist.org/packages/byteflick/laravel-strict-domain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/ByteFlick/laravel-strict-domain/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/ByteFlick/laravel-strict-domain/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ByteFlick/laravel-strict-domain/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/byteflick/laravel-strict-domain/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ByteFlick/laravel-strict-domain.svg?style=flat-square)](https://packagist.org/packages/byteflick/laravel-strict-domain)
 
