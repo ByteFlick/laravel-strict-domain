@@ -12,7 +12,7 @@ class RedirectExternalTraffic
         $response = $next($request);
 
         if ($request->getHttpHost() !== config('strict-domain.domain')) {
-            return redirect(config('app.url').request()->path());
+            return redirect(sprintf('%s/%s', config('app.url'), request()->path()));
         }
 
         return $response;
