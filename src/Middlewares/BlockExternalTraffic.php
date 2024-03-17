@@ -4,7 +4,6 @@ namespace ByteFlick\LaravelStrictDomain\Middlewares;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 
 class BlockExternalTraffic
 {
@@ -14,7 +13,7 @@ class BlockExternalTraffic
         $domain = config('strict-domain.domain');
 
         if ($request->getHttpHost() !== $domain) {
-            throw ValidationException::withMessages([sprintf('Traffic outside %s host is not allowed.', $domain)]);
+            abort(400, sprintf('Traffic outside %s host is not allowed.', $domain));
         }
 
         return $response;
