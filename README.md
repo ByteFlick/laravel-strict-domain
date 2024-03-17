@@ -25,7 +25,7 @@ composer require byteflick/laravel-strict-domain
 You can publish the config file with (Optional):
 
 ```bash
-php artisan vendor:publish --tag="laravel-strict-domain-config"
+php artisan vendor:publish --provider="ByteFlick\LaravelStrictDomain\LaravelStrictDomainServiceProvider"
 ```
 
 This is the contents of the published config file:
