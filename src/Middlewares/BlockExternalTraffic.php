@@ -14,7 +14,7 @@ class BlockExternalTraffic
         $domain = config('strict-domain.domain');
         $subDomainCheck = config('strict-domain.include_sub_domains');
 
-        if ($request->getHttpHost() === $domain || ($subDomainCheck && Str::endsWith($request->getHttpHost(), $domain))) {
+        if ($request->getHttpHost() === $domain || ($subDomainCheck && Str::contains($request->getHttpHost(), [$domain]))) {
             return $response;
         }
 
