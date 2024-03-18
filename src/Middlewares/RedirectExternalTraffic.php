@@ -18,7 +18,7 @@ class RedirectExternalTraffic
             return $response;
         }
 
-        return redirect(sprintf('%s/%s', config('app.url'), request()->path()));
-
+        $path = (request()->path() !== '/') ? request()->path() : '';
+        return redirect(sprintf('%s/%s', config('app.url'), $path));
     }
 }
