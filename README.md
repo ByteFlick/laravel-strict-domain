@@ -32,6 +32,7 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'include_sub_domains' => true,
     'domain' => env('APP_DOMAIN', 'localhost.com'),
 ];
 ```
