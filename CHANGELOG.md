@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-strict-domain` will be documented in this file.
 
+## v2.0.1 - 2024-03-17
+
+**Full Changelog**: https://github.com/ByteFlick/laravel-strict-domain/compare/v2.0.0...v2.0.1
+
 ## v2.0.0 - 2024-03-16
 
 ### Shortlist
