@@ -12,5 +12,6 @@ Here is the list of project versions that are currently being supported with sec
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.x.x   | :white_check_mark: |
-| 2.x.x   | :white_check_mark: |
+| 1.x.x   | -                  |
+| 2.x.x   | -                  |
+| 3.x.x   | :white_check_mark: |
