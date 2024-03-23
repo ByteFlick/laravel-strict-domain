@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-strict-domain` will be documented in this file.
 
+## v3.0.1 - 2024-03-18
+
+**Full Changelog**: https://github.com/ByteFlick/laravel-strict-domain/compare/v3.0.0...v3.0.1
+
 ## v3.0.0 - 2024-03-18
 
 - Added subdomain support.
